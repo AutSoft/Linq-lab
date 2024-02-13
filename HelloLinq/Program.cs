@@ -1,17 +1,17 @@
-﻿
-using HelloLinq;
+﻿using HelloLinq;
+
 using System;
 using System.Collections.Generic;
 
-static List<Dog> ListDogsByNamePrefix(IEnumerable<Dog> dogs,
-    string prefix)
+static List<Dog> ListDogsByNamePrefix(IEnumerable<Dog> dogs, string prefix)
 {
     var result = new List<Dog>();
     foreach (var dog in dogs)
     {
-        if (dog.Name.StartsWith(prefix,
-            StringComparison.OrdinalIgnoreCase))
+        if (dog.Name.StartsWith(prefix, StringComparison.OrdinalIgnoreCase))
+        {
             result.Add(dog);
+        }
     }
     return result;
 }
@@ -26,10 +26,11 @@ static string GetInput()
 
 string searchText;
 IEnumerable<Dog> Dogs = Dog.Repository.Values;
+
 while ((searchText = GetInput()).Length > 0)
 {
     foreach (var dog in ListDogsByNamePrefix(Dogs, searchText))
+    {
         Console.WriteLine(dog);
+    }
 }
-
-
